@@ -3,5 +3,5 @@ description = "Defines whether or not a Drupal site is a Scratchpad. Reports to 
 package = "EDIT"
 core = 6.x
 project = scratchpad
-project status url = http://modules.scratchpads.eu
 version = "6.x-1.0"
+dependencies[] = openid
