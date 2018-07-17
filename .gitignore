@@ -1,10 +1,4 @@
-profiles/hostmaster
-sites/all/modules/devel
-sites/127.0.0.1
-sites/e-monocot.org
-sites/get.scratchpads.eu
 .buildpath
 .project
 .settings
-sites/admin.scratchpads.eu/modules/hostmaster
-sites/all/libraries/jquery.ui
+.DS_Store
