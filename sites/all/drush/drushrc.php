@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 $options['sites'] = array (
@@ -8,16 +8,16 @@ $options['profiles'] = array (
   0 => 'default',
 );
 $options['packages'] = array (
-  'base' => 
+  'base' =>
   array (
-    'modules' => 
+    'modules' =>
     array (
-      'book' => 
+      'book' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/book/book.module',
         'basename' => 'book.module',
         'name' => 'book',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Book',
           'description' => 'Allows users to structure site pages in a hierarchy or outline.',
@@ -26,7 +26,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -34,12 +34,12 @@ $options['packages'] = array (
         'schema_version' => '6000',
         'version' => '6.38',
       ),
-      'php' => 
+      'php' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/php/php.module',
         'basename' => 'php.module',
         'name' => 'php',
-        'info' => 
+        'info' =>
         array (
           'name' => 'PHP filter',
           'description' => 'Allows embedded PHP code/snippets to be evaluated.',
@@ -48,7 +48,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -56,16 +56,16 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'translation' => 
+      'translation' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/translation/translation.module',
         'basename' => 'translation.module',
         'name' => 'translation',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Content translation',
           'description' => 'Allows content to be translated into different languages.',
-          'dependencies' => 
+          'dependencies' =>
           array (
             0 => 'locale',
           ),
@@ -79,12 +79,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'contact' => 
+      'contact' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/contact/contact.module',
         'basename' => 'contact.module',
         'name' => 'contact',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Contact',
           'description' => 'Enables the use of both personal and site-wide contact forms.',
@@ -93,7 +93,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -101,12 +101,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'upload' => 
+      'upload' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/upload/upload.module',
         'basename' => 'upload.module',
         'name' => 'upload',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Upload',
           'description' => 'Allows users to upload and attach files to content.',
@@ -115,7 +115,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -123,12 +123,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'profile' => 
+      'profile' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/profile/profile.module',
         'basename' => 'profile.module',
         'name' => 'profile',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Profile',
           'description' => 'Supports configurable user profiles.',
@@ -137,7 +137,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -145,12 +145,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'blog' => 
+      'blog' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/blog/blog.module',
         'basename' => 'blog.module',
         'name' => 'blog',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Blog',
           'description' => 'Enables keeping easily and regularly updated user web pages or blogs.',
@@ -159,7 +159,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -167,12 +167,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'dblog' => 
+      'dblog' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/dblog/dblog.module',
         'basename' => 'dblog.module',
         'name' => 'dblog',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Database logging',
           'description' => 'Logs and records system events to the database.',
@@ -181,7 +181,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -189,12 +189,12 @@ $options['packages'] = array (
         'schema_version' => '6000',
         'version' => '6.38',
       ),
-      'search' => 
+      'search' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/search/search.module',
         'basename' => 'search.module',
         'name' => 'search',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Search',
           'description' => 'Enables site-wide keyword searching.',
@@ -203,7 +203,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -211,12 +211,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'help' => 
+      'help' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/help/help.module',
         'basename' => 'help.module',
         'name' => 'help',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Help',
           'description' => 'Manages the display of online help.',
@@ -225,7 +225,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -233,12 +233,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'ping' => 
+      'ping' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/ping/ping.module',
         'basename' => 'ping.module',
         'name' => 'ping',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Ping',
           'description' => 'Alerts other sites when your site has been updated.',
@@ -247,7 +247,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -255,16 +255,16 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'forum' => 
+      'forum' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/forum/forum.module',
         'basename' => 'forum.module',
         'name' => 'forum',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Forum',
           'description' => 'Enables threaded discussions about general topics.',
-          'dependencies' => 
+          'dependencies' =>
           array (
             0 => 'taxonomy',
             1 => 'comment',
@@ -279,12 +279,12 @@ $options['packages'] = array (
         'schema_version' => '6000',
         'version' => '6.38',
       ),
-      'locale' => 
+      'locale' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/locale/locale.module',
         'basename' => 'locale.module',
         'name' => 'locale',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Locale',
           'description' => 'Adds language handling functionality and enables the translation of the user interface to languages other than English.',
@@ -293,7 +293,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -301,12 +301,12 @@ $options['packages'] = array (
         'schema_version' => '6007',
         'version' => '6.38',
       ),
-      'block' => 
+      'block' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/block/block.module',
         'basename' => 'block.module',
         'name' => 'block',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Block',
           'description' => 'Controls the boxes that are displayed around the main content.',
@@ -315,7 +315,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -323,12 +323,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'syslog' => 
+      'syslog' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/syslog/syslog.module',
         'basename' => 'syslog.module',
         'name' => 'syslog',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Syslog',
           'description' => 'Logs and records system events to syslog.',
@@ -337,7 +337,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -345,12 +345,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'node' => 
+      'node' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/node/node.module',
         'basename' => 'node.module',
         'name' => 'node',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Node',
           'description' => 'Allows content to be submitted to the site and displayed on pages.',
@@ -359,7 +359,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -367,12 +367,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'update' => 
+      'update' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/update/update.module',
         'basename' => 'update.module',
         'name' => 'update',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Update status',
           'description' => 'Checks the status of available updates for Drupal and your installed modules and themes.',
@@ -381,7 +381,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -389,12 +389,12 @@ $options['packages'] = array (
         'schema_version' => '6000',
         'version' => '6.38',
       ),
-      'statistics' => 
+      'statistics' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/statistics/statistics.module',
         'basename' => 'statistics.module',
         'name' => 'statistics',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Statistics',
           'description' => 'Logs access statistics for your site.',
@@ -403,7 +403,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -411,12 +411,12 @@ $options['packages'] = array (
         'schema_version' => '6000',
         'version' => '6.38',
       ),
-      'system' => 
+      'system' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/system/system.module',
         'basename' => 'system.module',
         'name' => 'system',
-        'info' => 
+        'info' =>
         array (
           'name' => 'System',
           'description' => 'Handles general site configuration for administrators.',
@@ -425,7 +425,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -433,12 +433,12 @@ $options['packages'] = array (
         'schema_version' => '6056',
         'version' => '6.38',
       ),
-      'blogapi' => 
+      'blogapi' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/blogapi/blogapi.module',
         'basename' => 'blogapi.module',
         'name' => 'blogapi',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Blog API',
           'description' => 'Allows users to post content using applications that support XML-RPC blog APIs.',
@@ -447,7 +447,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -455,12 +455,12 @@ $options['packages'] = array (
         'schema_version' => '6001',
         'version' => '6.38',
       ),
-      'path' => 
+      'path' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/path/path.module',
         'basename' => 'path.module',
         'name' => 'path',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Path',
           'description' => 'Allows users to rename URLs.',
@@ -469,7 +469,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -477,12 +477,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'user' => 
+      'user' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/user/user.module',
         'basename' => 'user.module',
         'name' => 'user',
-        'info' => 
+        'info' =>
         array (
           'name' => 'User',
           'description' => 'Manages the user registration and login system.',
@@ -491,7 +491,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -499,12 +499,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'menu' => 
+      'menu' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/menu/menu.module',
         'basename' => 'menu.module',
         'name' => 'menu',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Menu',
           'description' => 'Allows administrators to customize the site navigation menu.',
@@ -513,7 +513,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -521,12 +521,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'color' => 
+      'color' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/color/color.module',
         'basename' => 'color.module',
         'name' => 'color',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Color',
           'description' => 'Allows the user to change the color scheme of certain themes.',
@@ -535,7 +535,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -543,12 +543,12 @@ $options['packages'] = array (
         'schema_version' => '6001',
         'version' => '6.38',
       ),
-      'poll' => 
+      'poll' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/poll/poll.module',
         'basename' => 'poll.module',
         'name' => 'poll',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Poll',
           'description' => 'Allows your site to capture votes on different topics in the form of multiple choice questions.',
@@ -557,7 +557,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -565,12 +565,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'comment' => 
+      'comment' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/comment/comment.module',
         'basename' => 'comment.module',
         'name' => 'comment',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Comment',
           'description' => 'Allows users to comment on and discuss published content.',
@@ -579,7 +579,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -587,12 +587,12 @@ $options['packages'] = array (
         'schema_version' => '6005',
         'version' => '6.38',
       ),
-      'aggregator' => 
+      'aggregator' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/aggregator/aggregator.module',
         'basename' => 'aggregator.module',
         'name' => 'aggregator',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Aggregator',
           'description' => 'Aggregates syndicated content (RSS, RDF, and Atom feeds).',
@@ -601,7 +601,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -609,12 +609,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'throttle' => 
+      'throttle' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/throttle/throttle.module',
         'basename' => 'throttle.module',
         'name' => 'throttle',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Throttle',
           'description' => 'Handles the auto-throttling mechanism, to control site congestion.',
@@ -623,7 +623,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -631,12 +631,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'taxonomy' => 
+      'taxonomy' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/taxonomy/taxonomy.module',
         'basename' => 'taxonomy.module',
         'name' => 'taxonomy',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Taxonomy',
           'description' => 'Enables the categorization of content.',
@@ -645,7 +645,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -653,12 +653,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'filter' => 
+      'filter' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/filter/filter.module',
         'basename' => 'filter.module',
         'name' => 'filter',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Filter',
           'description' => 'Handles the filtering of content in preparation for display.',
@@ -667,7 +667,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -675,12 +675,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'openid' => 
+      'openid' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/openid/openid.module',
         'basename' => 'openid.module',
         'name' => 'openid',
-        'info' => 
+        'info' =>
         array (
           'name' => 'OpenID',
           'description' => 'Allows users to log into your site using OpenID.',
@@ -689,7 +689,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -697,16 +697,16 @@ $options['packages'] = array (
         'schema_version' => '6001',
         'version' => '6.38',
       ),
-      'tracker' => 
+      'tracker' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/tracker/tracker.module',
         'basename' => 'tracker.module',
         'name' => 'tracker',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Tracker',
           'description' => 'Enables tracking of recent posts for users.',
-          'dependencies' => 
+          'dependencies' =>
           array (
             0 => 'comment',
           ),
@@ -720,12 +720,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'trigger' => 
+      'trigger' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/modules/trigger/trigger.module',
         'basename' => 'trigger.module',
         'name' => 'trigger',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Trigger',
           'description' => 'Enables actions to be fired on certain system events, such as when new content is created.',
@@ -734,7 +734,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'drupal',
           'datestamp' => '1456343372',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'php' => '4.3.5',
@@ -742,18 +742,18 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => '6.38',
       ),
-      'scratchpad_apply' => 
+      'scratchpad_apply' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/sites/all/modules/scratchpad/scratchpad_apply/scratchpad_apply.module',
         'basename' => 'scratchpad_apply.module',
         'name' => 'scratchpad_apply',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Scratchpad Application form Service',
           'description' => 'Provides the data from the Scratchpad application form.  Used by the Aegir site installer',
           'package' => 'EDIT',
           'core' => '6.x',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'version' => NULL,
@@ -762,12 +762,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => NULL,
       ),
-      'scratchpad' => 
+      'scratchpad' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/sites/all/modules/scratchpad/scratchpad.module',
         'basename' => 'scratchpad.module',
         'name' => 'scratchpad',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Scratchpad',
           'description' => 'Defines whether or not a Drupal site is a Scratchpad. Reports to a central location to enable lists of other Scratchpads, and also to report stats about the site.',
@@ -775,7 +775,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'scratchpad',
           'version' => '6.x-1.0',
-          'dependencies' => 
+          'dependencies' =>
           array (
             0 => 'openid',
           ),
@@ -785,14 +785,14 @@ $options['packages'] = array (
         'version' => '6.x-1.0',
       ),
     ),
-    'themes' => 
+    'themes' =>
     array (
-      'bluemarine' => 
+      'bluemarine' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/themes/bluemarine/bluemarine.info',
         'basename' => 'bluemarine.info',
         'name' => 'Bluemarine',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Bluemarine',
           'description' => 'Table-based multi-column theme with a marine and ash color scheme.',
@@ -806,16 +806,16 @@ $options['packages'] = array (
         'prefix' => 'phptemplate',
         'template' => true,
       ),
-      'marvin' => 
+      'marvin' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/themes/chameleon/marvin/marvin.info',
         'basename' => 'marvin.info',
         'name' => 'Marvin',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Marvin',
           'description' => 'Boxy tabled theme in all grays.',
-          'regions' => 
+          'regions' =>
           array (
             'left' => 'Left sidebar',
             'right' => 'Right sidebar',
@@ -827,30 +827,30 @@ $options['packages'] = array (
           'datestamp' => '1456343372',
         ),
       ),
-      'chameleon' => 
+      'chameleon' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/themes/chameleon/chameleon.info',
         'basename' => 'chameleon.info',
         'name' => 'Chameleon',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Chameleon',
           'description' => 'Minimalist tabled theme with light colors.',
-          'regions' => 
+          'regions' =>
           array (
             'left' => 'Left sidebar',
             'right' => 'Right sidebar',
           ),
-          'features' => 
+          'features' =>
           array (
             0 => 'logo',
             1 => 'favicon',
             2 => 'name',
             3 => 'slogan',
           ),
-          'stylesheets' => 
+          'stylesheets' =>
           array (
-            'all' => 
+            'all' =>
             array (
               0 => 'style.css',
               1 => 'common.css',
@@ -862,12 +862,12 @@ $options['packages'] = array (
           'datestamp' => '1456343372',
         ),
       ),
-      'pushbutton' => 
+      'pushbutton' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/themes/pushbutton/pushbutton.info',
         'basename' => 'pushbutton.info',
         'name' => 'Pushbutton',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Pushbutton',
           'description' => 'Tabled, multi-column theme in blue and orange tones.',
@@ -881,21 +881,21 @@ $options['packages'] = array (
         'prefix' => 'phptemplate',
         'template' => true,
       ),
-      'minnelli' => 
+      'minnelli' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/themes/garland/minnelli/minnelli.info',
         'basename' => 'minnelli.info',
         'name' => 'Minnelli',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Minnelli',
           'description' => 'Tableless, recolorable, multi-column, fixed width theme.',
           'version' => '6.38',
           'core' => '6.x',
           'base theme' => 'garland',
-          'stylesheets' => 
+          'stylesheets' =>
           array (
-            'all' => 
+            'all' =>
             array (
               0 => 'minnelli.css',
             ),
@@ -904,25 +904,25 @@ $options['packages'] = array (
           'datestamp' => '1456343372',
         ),
       ),
-      'garland' => 
+      'garland' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/themes/garland/garland.info',
         'basename' => 'garland.info',
         'name' => 'Garland',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Garland',
           'description' => 'Tableless, recolorable, multi-column, fluid width theme (default).',
           'version' => '6.38',
           'core' => '6.x',
           'engine' => 'phptemplate',
-          'stylesheets' => 
+          'stylesheets' =>
           array (
-            'all' => 
+            'all' =>
             array (
               0 => 'style.css',
             ),
-            'print' => 
+            'print' =>
             array (
               0 => 'print.css',
             ),
@@ -935,25 +935,25 @@ $options['packages'] = array (
         'template' => true,
       ),
     ),
-    'platforms' => 
+    'platforms' =>
     array (
-      'drupal' => 
+      'drupal' =>
       array (
         'short_name' => 'drupal',
         'version' => '6.38',
         'description' => 'This platform is running Drupal 6.38',
       ),
     ),
-    'profiles' => 
+    'profiles' =>
     array (
-      'default' => 
+      'default' =>
       array (
         'name' => 'default',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Drupal',
           'description' => 'Select this profile to enable some basic Drupal functionality and the default theme.',
-          'languages' => 
+          'languages' =>
           array (
             0 => 'en',
           ),
@@ -963,22 +963,22 @@ $options['packages'] = array (
       ),
     ),
   ),
-  'sites-all' => 
+  'sites-all' =>
   array (
-    'modules' => 
+    'modules' =>
     array (
-      'scratchpad_apply' => 
+      'scratchpad_apply' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/sites/all/modules/scratchpad/scratchpad_apply/scratchpad_apply.module',
         'basename' => 'scratchpad_apply.module',
         'name' => 'scratchpad_apply',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Scratchpad Application form Service',
           'description' => 'Provides the data from the Scratchpad application form.  Used by the Aegir site installer',
           'package' => 'EDIT',
           'core' => '6.x',
-          'dependencies' => 
+          'dependencies' =>
           array (
           ),
           'version' => NULL,
@@ -987,12 +987,12 @@ $options['packages'] = array (
         'schema_version' => 0,
         'version' => NULL,
       ),
-      'scratchpad' => 
+      'scratchpad' =>
       array (
         'filename' => '/var/aegir/platforms/drupal_6/sites/all/modules/scratchpad/scratchpad.module',
         'basename' => 'scratchpad.module',
         'name' => 'scratchpad',
-        'info' => 
+        'info' =>
         array (
           'name' => 'Scratchpad',
           'description' => 'Defines whether or not a Drupal site is a Scratchpad. Reports to a central location to enable lists of other Scratchpads, and also to report stats about the site.',
@@ -1000,7 +1000,7 @@ $options['packages'] = array (
           'core' => '6.x',
           'project' => 'scratchpad',
           'version' => '6.x-1.0',
-          'dependencies' => 
+          'dependencies' =>
           array (
             0 => 'openid',
           ),
@@ -1010,18 +1010,18 @@ $options['packages'] = array (
         'version' => '6.x-1.0',
       ),
     ),
-    'themes' => 
+    'themes' =>
     array (
     ),
   ),
-  'profiles' => 
+  'profiles' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'modules' => 
+      'modules' =>
       array (
       ),
-      'themes' => 
+      'themes' =>
       array (
       ),
     ),
