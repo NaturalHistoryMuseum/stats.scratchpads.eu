@@ -414,8 +414,8 @@ function system_install() {
   db_query("INSERT INTO {role} (name) VALUES ('%s')", 'authenticated user');
   $rid_authenticated = db_last_insert_id('role', 'rid');
 
-  // Sanity check to ensure the anonymous and authenticated role IDs are the 
-  // same as the drupal defined constants. In certain situations, this will 
+  // Sanity check to ensure the anonymous and authenticated role IDs are the
+  // same as the drupal defined constants. In certain situations, this will
   // not be true
   if ($rid_anonymous != DRUPAL_ANONYMOUS_RID) {
     db_query("UPDATE {role} SET rid = %d WHERE rid = %d", DRUPAL_ANONYMOUS_RID, $rid_anonymous);
@@ -838,7 +838,7 @@ function system_schema() {
     'indexes' => array(
       'fit' => array('fit'),
       'tab_parent' => array('tab_parent'),
-      'tab_root_weight_title' => array(array('tab_root', 64), 'weight', 'title'),      
+      'tab_root_weight_title' => array(array('tab_root', 64), 'weight', 'title'),
       ),
     'primary key' => array('path'),
     );
@@ -1878,8 +1878,8 @@ function system_update_6021() {
       }
       if ($item['description']) {
         $item['options']['attributes']['title'] = $item['description'];
-      }      
-      
+      }
+
       // Save the link.
       menu_link_save($item);
       $_SESSION['menu_item_map'][$item['mid']] = array('mlid' => $item['mlid'], 'menu_name' => $item['menu_name']);
