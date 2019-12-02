@@ -1,0 +1,92 @@
+{
+	"since": 1572264901,
+	"bundles": {
+		"comment": {
+			"label": "Comment",
+			"total": "2",
+			"recent": "2"
+		},
+		"node": {
+			"label": "Node",
+			"bundles": {
+				"biblio": {
+					"label": "Biblio",
+					"total": "1",
+					"recent": "0"
+				},
+				"location": {
+					"label": "Location",
+					"total": "1",
+					"recent": "0"
+				},
+				"map_thing": {
+					"label": "Map thing",
+					"total": "1",
+					"recent": "0"
+				},
+				"media_gallery": {
+					"label": "Media gallery",
+					"total": "1",
+					"recent": "1"
+				},
+				"page": {
+					"label": "Page",
+					"total": "2",
+					"recent": "0"
+				},
+				"specimen_observation": {
+					"label": "Specimen\\/Observation",
+					"total": "1",
+					"recent": "0"
+				},
+				"spm": {
+					"label": "Taxon Description",
+					"total": "3",
+					"recent": "0"
+				}
+			}
+		},
+		"file": {
+			"label": "File",
+			"bundles": {
+				"application": {
+					"label": "Other",
+					"total": "0",
+					"recent": "0"
+				},
+				"audio": {
+					"label": "Audio",
+					"total": "0",
+					"recent": "0"
+				},
+				"image": {
+					"label": "Image",
+					"total": "1",
+					"recent": "1"
+				},
+				"text": {
+					"label": "Text",
+					"total": "0",
+					"recent": "0"
+				},
+				"video": {
+					"label": "Video",
+					"total": "0",
+					"recent": "0"
+				}
+			}
+		},
+		"taxonomy_vocabulary": {
+			"label": "Taxonomy vocabulary",
+			"total": "4"
+		},
+		"user": {
+			"label": "User",
+			"total": "1",
+			"recent": "0",
+			"active": "1"
+		}
+	},
+	"errors": [],
+	"execution_time": 0.01723790168762207
+}

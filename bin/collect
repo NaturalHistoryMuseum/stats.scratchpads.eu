@@ -1,0 +1,92 @@
+#!/usr/bin/php
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+/**
+ * Collect data from a scratchpad and put it in the db
+ * @param \ScratchpadsStats\Storage $db The database connection
+ * @param \GuzzleHttp\Client $client Optional http client instance
+ */
+$collect = function($db, $client = null) {
+	$site = $db->getNextSite();
+
+	// This is the hostname
+	$url = $site['url'];
+	// api=0 is the old stats system that didn't really work
+	// api=1 is the curent system
+	$api = $site['api_version'];
+
+	if(!$url) {
+		throw new Error("Url not present.");
+	}
+
+	$client = $client ?? new \GuzzleHttp\Client(
+		["base_url" => "http://$url"]
+	);
+
+	// The old api needs to know how far back you want to go.
+	// Might introduce this to the new api at some point too.
+	$since = strtotime("-1 month");
+	$endpoint = $api === 0 ? "/stats.json?since=$since" : '/stats';
+	$transferTime = null;
+
+	$res = $client->request('GET', $endpoint,  [
+    'on_stats' => function (\GuzzleHttp\TransferStats $stats) use ($transferTime) {
+			// New api will tell you how long the request took. Measure it for the new one.
+      $transferTime = $stats->getTransferTime(); 
+    }
+	]);
+
+	if($res->getStatusCode() >= 400) {
+		throw new Error("Invalid response from stats endpoint");
+	}
+
+	$stats = json_decode($res->getBody(), 1);
+
+	if($api === 0) {
+		// Do some fudging to get the old stats into the new form
+		$bundles = [];
+
+		foreach($stats as $stat) {
+			$entity = $stat['entity'];
+			$bundle = $stat['bundle'];
+			$bundles[$entity] = $bundles[$entity] ?? [ 'label' => $entity ];
+			$bundles[$entity][$bundle] = [ 'label' => $stat['bundle_label'], 'recent' => 0 ];
+			$bundles[$entity][$bundle]['recent'] += $stat['number_created'];
+		}
+
+		// User data is at a separate URL
+		$res = $client->request('GET', "/login.json?since=$since",  [
+			'on_stats' => function (\GuzzleHttp\TransferStats $stats) use ($transferTime) {
+				 $transferTime += $stats->getTransferTime(); 
+			}
+		]);
+
+		$bundles['user'] = [
+			'label' => 'User',
+			'total' => count($logins),
+			'recent' => count(array_filter($logins, function($u) { return $u['created'] >= $since; } )),
+			'active' => count(array_filter($logins, function($u) { return $u['access'] >= $since; } ))
+		];
+
+		$stats = [
+			"since" => $since,
+			"bundles" => $bundles,
+			"errors" => [],
+			"execution_time" => $transferTime
+		];
+	}
+
+	$db->recordStats($url, $stats);
+};
+
+// If this file is called directly, execute the script on the db.
+if(realpath($_SERVER['SCRIPT_FILENAME']) === __FILE__) {
+	$db = new \ScratchpadsStats\Storage;
+	$db->init();
+	$collect($db);
+}
+
+// Otherwise return the function so it can be called e.g. by the test runner
+return $collect;
+?>

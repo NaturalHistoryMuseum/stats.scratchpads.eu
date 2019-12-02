@@ -1,0 +1,23 @@
+{
+    "name": "nhm/stats",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^6.4",
+        "slim/slim": "^4.0",
+        "http-interop/http-factory-guzzle": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "Paul Kiddle",
+            "email": "p.kiddle@nhm.ac.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ScratchpadsStats\\": "src"
+        }
+    },
+    "require-dev": {
+        "kahlan/kahlan": "^4.6"
+    }
+}

@@ -1,0 +1,1 @@
+vendor/bin/kahlan --coverage=4

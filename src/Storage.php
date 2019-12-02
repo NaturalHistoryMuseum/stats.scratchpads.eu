@@ -1,0 +1,101 @@
+<?php namespace ScratchpadsStats;
+
+/**
+ * Abstraction around data storage for recording sites and stats
+ */
+class Storage {
+	/**
+	 * Create the database connection and set up the tables
+	 *
+	 * @param boolean $memory Whether to run this just as an in-memory (test) data store
+	 * @return void
+	 */
+	function init($memory = false) {
+		$loc = $memory ? ':memory:' : __DIR__ . '/../db.db';
+		$db = new \SQLite3($loc);
+
+		@$db->exec("CREATE TABLE site (url, name, api_version, date_created, last_attempt, last_success);");
+		@$db->exec("CREATE TABLE capture (id, date, since, site, stats);");
+
+		$this->db = $db;
+	}
+
+	/**
+	 * Register a scratchpad for stat collection
+	 *
+	 * @param string $url The hostname of the scratchpad
+	 * @param string $name The title of the scratchpad
+	 * @param integer $date The date the scratchpad was created
+	 * @param integer $api 0=old api, 1=current api
+	 * @return void
+	 */
+	function register($url, $name, $date, $api=1){
+		$statement = $this->db->prepare("insert into site (url, name, date_created, api_version) VALUES(:url, :name, :date, :api)");
+		$statement->bindValue(":url", $url);
+		$statement->bindValue(":name", $name);
+		$statement->bindValue(":date", $date);
+		$statement->bindValue(":api", $api);
+		$statement->execute();
+	}
+
+	/**
+	 * Get the next site waiting for stats collection
+	 *
+	 * @return array Associative array with url and api_version
+	 */
+	function getNextSite() {
+		$q = $this->db->query("select url, api_version from site order by last_attempt limit 1");
+		return $q->fetchArray(SQLITE3_ASSOC);
+	}
+
+	/**
+	 * Record an attempt to collect stats from a site
+	 *
+	 * @param string $site The site hostname
+	 * @param boolean $success True if the collection was successful
+	 * @return void
+	 */
+	function registerAttempt($site, $success = false) {
+		if($success) {
+			$stmt = $this->db->prepare("update site set last_attempt=date('now'), last_success=date('now') where url=:site");
+		} else {
+			$stmt = $this->db->prepare("update site set last_attempt=date('now') where url=:site");
+		}
+
+		$stmt->bindValue(':site', $site);
+		$stmt->execute();
+	}
+
+	/**
+	 * Record the stats collected from a site
+	 *
+	 * @param string $site The hostname of the site
+	 * @param array $stats The stats collected from the site
+	 * @return void
+	 */
+	function recordStats($site, $stats) {
+		$stmt = $this->db->prepare("Insert into capture (date, since, site, stats) VALUES(:date, :since, :site, :stats)");
+		// Todo: Ensure the stats are in a certain format; calculate totals, etc
+		$stmt->bindValue(':since', $stats['since']);
+		$stmt->bindValue(':date', time());
+		$stmt->bindValue(':stats', json_encode($stats));
+		$stmt->bindValue(':site', $site);
+		$stmt->execute();
+	}
+
+	/**
+	 * Get all of the stats collected
+	 *
+	 * @return array Array of stats collected from all sites
+	 */
+	function getStats(){
+		$query = $this->db->query('select date, since, site, stats from capture order by date');
+		$results = [];
+		while($result = $query->fetchArray(SQLITE3_ASSOC)) {
+			$result['stats'] = json_decode($result['stats'], 1);
+			$results[] = $result;
+		}
+
+		return $results;
+	}
+}
