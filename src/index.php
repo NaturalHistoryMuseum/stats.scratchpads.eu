@@ -14,8 +14,11 @@ require __DIR__.'/../vendor/autoload.php';
  */
 function createApp($db = null, $guzzleHandlers = null) {
 	if(!$db) {
-		$db = new \ScratchpadsStats\Storage;
-		$db->init();
+		$db = new \ScratchpadsStats\Storage(
+			getenv('DATABASE_CONNECTION'),
+			getenv('DATABASE_USER'),
+			getenv('DATABASE_PASSWORD')
+		);
 	}
 
 	// I like Slim for its callback-based route handling api but it does try to be

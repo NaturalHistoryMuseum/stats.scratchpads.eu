@@ -9,8 +9,8 @@ use GuzzleHttp\Psr7\Response;
 
 describe('Router', function() use($getRouter){
 	beforeEach(function() use($getRouter) {
-		$this->storage = new \ScratchpadsStats\Storage;
-		$this->storage->init(true);
+		$this->storage = new \ScratchpadsStats\Storage('sqlite3::memory:');
+		$this->storage->migrate();
 
 		$this->guzzleMocks = new MockHandler([]);
 		$handler = HandlerStack::create($this->guzzleMocks);

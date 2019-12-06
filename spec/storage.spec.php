@@ -3,8 +3,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 describe('Storage', function(){
 	beforeEach(function () {
-		$this->storage = new \ScratchpadsStats\Storage;
-		$this->storage->init(true);
+		$this->storage = new \ScratchpadsStats\Storage('sqlite3::memory:');
+		$this->storage->migrate();
 	});
 
 	it('Registers a site', function() {

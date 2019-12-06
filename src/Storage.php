@@ -4,20 +4,22 @@
  * Abstraction around data storage for recording sites and stats
  */
 class Storage {
+	function __construct($dsn, $username = null, $password = null){
+		list($proto, $file) = explode(':', $dsn, 2);
+		if($proto == "sqlite" || $proto == "sqlite3") {
+			$this->db = new \SQLite3($file);
+		} else {
+			$this->db = new \PDO($dsn, $username, $password);
+		}
+	}
 	/**
-	 * Create the database connection and set up the tables
+	 * Perform any database migrations needed
 	 *
-	 * @param boolean $memory Whether to run this just as an in-memory (test) data store
 	 * @return void
 	 */
-	function init($memory = false) {
-		$loc = $memory ? ':memory:' : __DIR__ . '/../db.db';
-		$db = new \SQLite3($loc);
-
-		@$db->exec("CREATE TABLE site (url, name, api_version, date_created, last_attempt, last_success);");
-		@$db->exec("CREATE TABLE capture (id, date, since, site, stats);");
-
-		$this->db = $db;
+	function migrate() {
+		$this->db->exec("CREATE TABLE site (url, name, api_version, date_created, last_attempt, last_success);");
+		$this->db->exec("CREATE TABLE capture (id, date, since, site, stats);");
 	}
 
 	/**
@@ -45,7 +47,7 @@ class Storage {
 	 */
 	function getNextSite() {
 		$q = $this->db->query("select url, api_version from site order by last_attempt limit 1");
-		return $q->fetchArray(SQLITE3_ASSOC);
+		return ($q instanceof \SQLite3Result) ? $q->fetchArray(SQLITE3_ASSOC) : $q->fetch(\PDO::FETCH_ASSOC);
 	}
 
 	/**
@@ -90,12 +92,16 @@ class Storage {
 	 */
 	function getStats(){
 		$query = $this->db->query('select date, since, site, stats from capture order by date');
-		$results = [];
-		while($result = $query->fetchArray(SQLITE3_ASSOC)) {
-			$result['stats'] = json_decode($result['stats'], 1);
-			$results[] = $result;
-		}
+		if($query instanceof \SQLite3Result) {
+			$results = [];
+			while($result = $query->fetchArray(SQLITE3_ASSOC)) {
+				$result['stats'] = json_decode($result['stats'], 1);
+				$results[] = $result;
+			}
 
-		return $results;
+			return $results;
+		} else {
+			return $query->fetchAll(\PDO::FETCH_ASSOC);
+		}
 	}
 }

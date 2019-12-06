@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/getConnection.php';
 
 /**
  * Collect data from a scratchpad and put it in the db
@@ -82,8 +82,7 @@ $collect = function($db, $client = null) {
 
 // If this file is called directly, execute the script on the db.
 if(realpath($_SERVER['SCRIPT_FILENAME']) === __FILE__) {
-	$db = new \ScratchpadsStats\Storage;
-	$db->init();
+	$db = getConnection('Collects stats from a single site');
 	$collect($db);
 }
 

@@ -17,8 +17,8 @@ describe('Collection script', function(){
 		$handler = HandlerStack::create($mock);
 		$client = new Client([ 'handler' => $handler ]);
 
-		$db = new \ScratchpadsStats\Storage;
-		$db->init(true);
+		$db = new \ScratchpadsStats\Storage('sqlite3::memory:');
+		$db->migrate();
 		$db->register('localhost:1234', 'Test Site', time(), 1);
 
 		$collect = require __DIR__ . '/../bin/collect';
