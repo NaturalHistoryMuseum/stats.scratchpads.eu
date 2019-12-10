@@ -32,6 +32,7 @@ function createApp($db = null, $guzzleHandlers = null) {
 
 	// Home page is just aJSON dump of stats for now
 	$app->get('/', function (Request $request, Response $response, array $args) use($db) {
+		$response = $response->withHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
 		$response->getBody()->write(json_encode($db->getStats()));
 
 		return $response;

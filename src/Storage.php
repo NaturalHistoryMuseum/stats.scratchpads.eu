@@ -10,6 +10,7 @@ class Storage {
 			$this->db = new \SQLite3($file);
 		} else {
 			$this->db = new \PDO($dsn, $username, $password);
+			$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 		}
 	}
 	/**
@@ -18,8 +19,24 @@ class Storage {
 	 * @return void
 	 */
 	function migrate() {
-		$this->db->exec("CREATE TABLE site (url, name, api_version, date_created, last_attempt, last_success);");
-		$this->db->exec("CREATE TABLE capture (id, date, since, site, stats);");
+		$this->db->exec("CREATE TABLE IF NOT EXISTS site (
+			url VARCHAR(255) NOT NULL,
+			name VARCHAR(255) NOT NULL,
+			api_version INT NOT NULL,
+			date_created TIMESTAMP NOT NULL,
+			last_attempt TIMESTAMP,
+			last_success TIMESTAMP,
+			PRIMARY KEY (url)
+		);");
+
+		$this->db->exec("CREATE TABLE IF NOT EXISTS capture (
+			id INT NOT NULL AUTO_INCREMENT,
+			date TIMESTAMP NOT NULL,
+			since TIMESTAMP NOT NULL,
+			site VARCHAR(255) NOT NULL,
+			stats BLOB NOT NULL,
+			PRIMARY KEY (id)
+		);");
 	}
 
 	/**
