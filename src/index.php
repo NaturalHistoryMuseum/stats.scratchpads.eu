@@ -59,16 +59,19 @@ function createApp($db = null, $guzzleHandlers = null) {
 
 	// This is the old API that sites call to to report (an incomplete subset of) their stats
 	$app->get('/report_scratchpad', function (Request $request, Response $response, array $args)  use($db, $getGuzzle) {
+		$response = $response->withHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+
 		$data = unserialize($request->getQueryParams()['data'] ?? '');
 
 		// Ignore everything except the site URL
-		$url = $data['site_url'];
-		$domain = parse_url($url, PHP_URL_HOST);
+		$domain = $data['site_url'];
 
 		$client = call_user_func($getGuzzle);
 
+		$url = "http://$domain/login.json?hash=" . getenv('SECURITY_KEY', '');
+
 		// Check site exists
-		$res = $client->request('GET', "http://$domain/login.json");
+		$res = $client->request('GET', $url);
 
 		if($res->getStatusCode() >= 400) {
 			return $response->withStatus(400);

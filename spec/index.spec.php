@@ -50,7 +50,7 @@ describe('Router', function() use($getRouter){
 		];
 		$query = [
 			'data' => serialize([
-				'site_url' => 'http://localhost'
+				'site_url' => 'localhost'
 			])
 		];
 		$this->guzzleMocks->append(new Response(200, [], json_encode($info)));

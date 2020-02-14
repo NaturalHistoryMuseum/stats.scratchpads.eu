@@ -19,6 +19,10 @@ class Storage {
 	 * @return void
 	 */
 	function migrate() {
+		$idRow = $this->db instanceof \PDO ?
+			"id INT NOT NULL AUTO_INCREMENT," : "";
+		$pKey = $idRow ? ", PRIMARY KEY (id)" : "";
+
 		$this->db->exec("CREATE TABLE IF NOT EXISTS site (
 			url VARCHAR(255) NOT NULL,
 			name VARCHAR(255) NOT NULL,
@@ -30,12 +34,12 @@ class Storage {
 		);");
 
 		$this->db->exec("CREATE TABLE IF NOT EXISTS capture (
-			id INT NOT NULL AUTO_INCREMENT,
-			date TIMESTAMP NOT NULL,
+			$idRow
+			date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			since TIMESTAMP NOT NULL,
 			site VARCHAR(255) NOT NULL,
-			stats BLOB NOT NULL,
-			PRIMARY KEY (id)
+			stats BLOB NOT NULL
+			$pKey
 		);");
 	}
 
@@ -49,7 +53,14 @@ class Storage {
 	 * @return void
 	 */
 	function register($url, $name, $date, $api=1){
-		$statement = $this->db->prepare("insert into site (url, name, date_created, api_version) VALUES(:url, :name, :date, :api)");
+		$onDupe = $this->db instanceof \PDO ?
+		"ON DUPLICATE KEY UPDATE name = :name, api_version = :api" : "";
+
+		$statement = $this->db->prepare(
+			"insert into site (url, name, date_created, api_version) ".
+			"VALUES(:url, :name, :date, :api) ".
+			$onDupe
+		);
 		$statement->bindValue(":url", $url);
 		$statement->bindValue(":name", $name);
 		$statement->bindValue(":date", $date);
@@ -118,7 +129,11 @@ class Storage {
 
 			return $results;
 		} else {
-			return $query->fetchAll(\PDO::FETCH_ASSOC);
+			$results = $query->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($results as &$result) {
+				$result['stats'] = json_decode($result['stats'], 1);
+			}
+			return $results;
 		}
 	}
 }

@@ -23,7 +23,7 @@ describe('Collection script', function(){
 
 		$collect = require __DIR__ . '/../bin/collect';
 
-		call_user_func_array($collect, [$db, $client]);
+		call_user_func_array($collect, [$db, '', $client]);
 
 		$parsed_stats = json_decode($stats, 1);
 

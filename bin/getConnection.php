@@ -38,9 +38,22 @@ HELP;
  * @param string $desc	Brief description of what the called command does
  * @return \ScratchpadsStats\Storage
  */
-function getConnection($desc){
+function getConnection($desc) {
+	$args = parseArgs($desc);
+	return $args['storage'];
+}
+
+/**
+ * Parse the env or command line arguments and return a config array
+ *
+ * @param string $desc	Brief description of what the called command does
+ * @return Aray Config object
+ */
+function parseArgs($desc){
+	global $argv;
+
 	$opind = null;
-	$opts = getopt('hu:p:', [], $opind);
+	$opts = getopt('hu:p:k:', [], $opind);
 
 	if(isset($opts['h'])) {
 		help($desc);
@@ -52,6 +65,10 @@ function getConnection($desc){
 		$opts['u'] ?? getenv('DATABASE_USER'),
 		$opts['p'] ?? getenv('DATABASE_PASSWORD')
 	);
+	$hash = $opts['k'] ?? 	getenv('SECURITY_KEY', '');
 
-	return $db;
+	return [
+		'storage' => $db,
+		'hash' => $hash
+	];
 }

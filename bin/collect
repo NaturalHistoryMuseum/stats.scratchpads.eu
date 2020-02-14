@@ -5,9 +5,10 @@ require __DIR__ . '/getConnection.php';
 /**
  * Collect data from a scratchpad and put it in the db
  * @param \ScratchpadsStats\Storage $db The database connection
+ * @param string $hash The hash to pass to a site
  * @param \GuzzleHttp\Client $client Optional http client instance
  */
-$collect = function($db, $client = null) {
+$collect = function($db, $hash='', $client = null) {
 	$site = $db->getNextSite();
 
 	// This is the hostname
@@ -21,13 +22,13 @@ $collect = function($db, $client = null) {
 	}
 
 	$client = $client ?? new \GuzzleHttp\Client(
-		["base_url" => "http://$url"]
+		["base_uri" => "http://$url"]
 	);
 
 	// The old api needs to know how far back you want to go.
 	// Might introduce this to the new api at some point too.
 	$since = strtotime("-1 month");
-	$endpoint = $api === 0 ? "/stats.json?since=$since" : '/stats';
+	$endpoint = $api == 0 ? "/stats.json?since=$since&hash=$hash" : '/stats';
 	$transferTime = null;
 
 	$res = $client->request('GET', $endpoint,  [
@@ -43,7 +44,7 @@ $collect = function($db, $client = null) {
 
 	$stats = json_decode($res->getBody(), 1);
 
-	if($api === 0) {
+	if($api == 0) {
 		// Do some fudging to get the old stats into the new form
 		$bundles = [];
 
@@ -56,7 +57,7 @@ $collect = function($db, $client = null) {
 		}
 
 		// User data is at a separate URL
-		$res = $client->request('GET', "/login.json?since=$since",  [
+		$res = $client->request('GET', "/login.json?since=$since&hash=$hash",  [
 			'on_stats' => function (\GuzzleHttp\TransferStats $stats) use ($transferTime) {
 				 $transferTime += $stats->getTransferTime(); 
 			}
@@ -82,8 +83,8 @@ $collect = function($db, $client = null) {
 
 // If this file is called directly, execute the script on the db.
 if(realpath($_SERVER['SCRIPT_FILENAME']) === __FILE__) {
-	$db = getConnection('Collects stats from a single site');
-	$collect($db);
+	$args = parseArgs('Collects stats from a single site');
+	$collect($args['storage'], $args['hash']);
 }
 
 // Otherwise return the function so it can be called e.g. by the test runner
