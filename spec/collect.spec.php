@@ -28,8 +28,8 @@ describe('Collection script', function(){
 		$parsed_stats = json_decode($stats, 1);
 
 		expect($db->getStats())->toEqual([[
-			'date' => time(),
-			'since' => $parsed_stats['since'],
+			'date' => date(DATE_ISO8601),
+			'since' => date(DATE_ISO8601, $parsed_stats['since']),
 			'site' => 'localhost:1234',
 			'stats' => $parsed_stats
 		]]);

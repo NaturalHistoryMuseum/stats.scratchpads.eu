@@ -31,11 +31,11 @@ $collect = function($db, $hash='', $client = null) {
 	$endpoint = $api == 0 ? "/stats.json?since=$since&hash=$hash" : '/stats';
 	$transferTime = null;
 
-	$res = $client->request('GET', $endpoint,  [
-    'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$transferTime) {
+	$res = $client->request('GET', $endpoint, [
+		'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$transferTime) {
 			// New api will tell you how long the request took. Measure it for the new one.
-      $transferTime = $stats->getTransferTime(); 
-    }
+			$transferTime = $stats->getTransferTime(); 
+		}
 	]);
 
 	if($res->getStatusCode() >= 400) {
@@ -57,9 +57,9 @@ $collect = function($db, $hash='', $client = null) {
 		}
 
 		// User data is at a separate URL
-		$res = $client->request('GET', "/login.json?since=$since&hash=$hash",  [
+		$res = $client->request('GET', "/login.json?since=$since&hash=$hash", [
 			'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$transferTime) {
-				 $transferTime += $stats->getTransferTime(); 
+					$transferTime += $stats->getTransferTime(); 
 			}
 		]);
 
