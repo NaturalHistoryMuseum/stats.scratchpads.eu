@@ -63,7 +63,7 @@ class Storage {
 		);
 		$statement->bindValue(":url", $url);
 		$statement->bindValue(":name", $name);
-		$statement->bindValue(":date", $date);
+		$statement->bindValue(":date", date(DATE_ISO8601, $date));
 		$statement->bindValue(":api", $api);
 		$statement->execute();
 	}
@@ -106,8 +106,8 @@ class Storage {
 	function recordStats($site, $stats) {
 		$stmt = $this->db->prepare("Insert into capture (date, since, site, stats) VALUES(:date, :since, :site, :stats)");
 		// Todo: Ensure the stats are in a certain format; calculate totals, etc
-		$stmt->bindValue(':since', $stats['since']);
-		$stmt->bindValue(':date', time());
+		$stmt->bindValue(':since', date(DATE_ISO8601, $stats['since']));
+		$stmt->bindValue(':date', date(DATE_ISO8601));
 		$stmt->bindValue(':stats', json_encode($stats));
 		$stmt->bindValue(':site', $site);
 		$stmt->execute();

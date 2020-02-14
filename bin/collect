@@ -32,7 +32,7 @@ $collect = function($db, $hash='', $client = null) {
 	$transferTime = null;
 
 	$res = $client->request('GET', $endpoint,  [
-    'on_stats' => function (\GuzzleHttp\TransferStats $stats) use ($transferTime) {
+    'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$transferTime) {
 			// New api will tell you how long the request took. Measure it for the new one.
       $transferTime = $stats->getTransferTime(); 
     }
@@ -58,16 +58,18 @@ $collect = function($db, $hash='', $client = null) {
 
 		// User data is at a separate URL
 		$res = $client->request('GET', "/login.json?since=$since&hash=$hash",  [
-			'on_stats' => function (\GuzzleHttp\TransferStats $stats) use ($transferTime) {
+			'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$transferTime) {
 				 $transferTime += $stats->getTransferTime(); 
 			}
 		]);
 
+		$logins = json_decode($res->getBody(), 1);
+
 		$bundles['user'] = [
 			'label' => 'User',
 			'total' => count($logins),
-			'recent' => count(array_filter($logins, function($u) { return $u['created'] >= $since; } )),
-			'active' => count(array_filter($logins, function($u) { return $u['access'] >= $since; } ))
+			'recent' => count(array_filter($logins, function($u) use($since) { return $u['created'] >= $since; } )),
+			'active' => count(array_filter($logins, function($u) use($since) { return $u['access'] >= $since; } ))
 		];
 
 		$stats = [
