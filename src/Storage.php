@@ -53,8 +53,9 @@ class Storage {
 	 * @return void
 	 */
 	function register($url, $name, $date, $api=1){
+		// NB: Only upgrade api_version, never downgrade
 		$onDupe = $this->db instanceof \PDO ?
-		"ON DUPLICATE KEY UPDATE name = :name, api_version = :api" : "";
+			"ON DUPLICATE KEY UPDATE name = :name, api_version = MAX(:api, api_version)" : "";
 
 		$statement = $this->db->prepare(
 			"insert into site (url, name, date_created, api_version) ".
