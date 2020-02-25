@@ -45,12 +45,13 @@ function createApp($db = null, $guzzleHandlers = null) {
 		$client = call_user_func($getGuzzle);
 
 		// Basic validation that the site exists and get a little info
-		$res = $client->request('GET', "http://$domain/stats");
+		$res = $client->request('GET', "http://$domain/statistics");
 		if($res->getStatusCode() >= 400) {
 			return $response->withStatus(400);
 		}
 
 		$json = $res->getBody()->getContents();
+
 		$info = json_decode($json, 1);
 
 		$db->register($domain, $info['name'], $info['created'], 1);

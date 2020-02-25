@@ -28,7 +28,7 @@ $collect = function($db, $hash='', $client = null) {
 	// The old api needs to know how far back you want to go.
 	// Might introduce this to the new api at some point too.
 	$since = strtotime("-1 month");
-	$endpoint = $api == 0 ? "/stats.json?since=$since&hash=$hash" : '/stats';
+	$endpoint = $api == 0 ? "/stats.json?since=$since&hash=$hash" : '/statistics';
 	$transferTime = null;
 
 	$res = $client->request('GET', $endpoint, [
