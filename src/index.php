@@ -38,6 +38,14 @@ function createApp($db = null, $guzzleHandlers = null) {
 		return $response;
 	});
 
+	// List all sites
+	$app->get('/sites', function (Request $request, Response $response, array $args) use($db) {
+		$response = $response->withHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+		$response->getBody()->write(json_encode($db->getSites()));
+
+		return $response;
+	});
+
 	// Registration endpoint for v1 api
 	$app->post('/register', function ($request, $response, $args) use ($db, $getGuzzle) {
 		$url = $request->getBody()->getContents();

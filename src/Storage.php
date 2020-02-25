@@ -80,6 +80,25 @@ class Storage {
 	}
 
 	/**
+	 * Get a list of all recorded sites
+	 *
+	 * @return array List of sites
+	 */
+	function getSites(){
+		$query = $this->db->query('select * from site');
+		if($query instanceof \SQLite3Result) {
+			$results = [];
+			while($result = $query->fetchArray(SQLITE3_ASSOC)) {
+				$results[] = $result;
+			}
+
+			return $results;
+		} else {
+			return $query->fetchAll(\PDO::FETCH_ASSOC);
+		}
+	}
+
+	/**
 	 * Record an attempt to collect stats from a site
 	 *
 	 * @param string $site The site hostname
