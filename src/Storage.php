@@ -106,10 +106,11 @@ class Storage {
 	 * @return void
 	 */
 	function registerAttempt($site, $success = false) {
+		$now = $this->db instanceof \SQLite3 ? "date('now')" : "NOW()";
 		if($success) {
-			$stmt = $this->db->prepare("update site set last_attempt=date('now'), last_success=date('now') where url=:site");
+			$stmt = $this->db->prepare("update site set last_attempt=$now, last_success=$now where url=:site");
 		} else {
-			$stmt = $this->db->prepare("update site set last_attempt=date('now') where url=:site");
+			$stmt = $this->db->prepare("update site set last_attempt=$now where url=:site");
 		}
 
 		$stmt->bindValue(':site', $site);
