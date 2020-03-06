@@ -8,9 +8,28 @@ require __DIR__ . '/getConnection.php';
  * @param string $hash The hash to pass to a site
  * @param \GuzzleHttp\Client $client Optional http client instance
  */
-$collect = function($db, $hash='', $client = null) {
+$collect = function($db, $hash='', $client=null) {
 	$site = $db->getNextSite();
+	$url = $site['url'];
 
+	try {
+		$stats = getSiteStats($site, $hash, $client);
+		$db->recordStats($url, $stats);
+		$db->registerAttempt($url, true);
+	} catch(Error | Exception $e) {
+		$db->registerAttempt($url, false);
+	}
+};
+
+/**
+ * Get the stats for a single site
+ * @param Array $site The site to get stats for
+ * @param string $hash The hash to pass to a site
+ * @param \GuzzleHttp\Client $client Optional http client instance
+ *
+ * @return Array The collected stats
+ */
+function getSiteStats($site, $hash='', $client = null) {
 	// This is the hostname
 	$url = $site['url'];
 	// api=0 is the old stats system that didn't really work
@@ -80,8 +99,8 @@ $collect = function($db, $hash='', $client = null) {
 		];
 	}
 
-	$db->recordStats($url, $stats);
-};
+	return $stats;
+}
 
 // If this file is called directly, execute the script on the db.
 if(realpath($_SERVER['SCRIPT_FILENAME']) === __FILE__) {
